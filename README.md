@@ -4,14 +4,20 @@
 
 Console game on Ruby.  
 
-In the beginning, you must ask a question that can be answered positively or negatively.  
-After launch, the program greets.  
-Then a delay of 2 seconds, the program chooses one of 20 answers and show it.  
-detailed information about the game: [Wikipedia](https://en.wikipedia.org/wiki/Hangman_(game))
+The game chooses a word from the dictionary.  
+You have 7 attempts to enter a letter and guess the word.  
+
+Detailed information about the game: [Wikipedia](https://en.wikipedia.org/wiki/Hangman_(game))
 
 ### Running ###
 
 1) Download repo to your local directory.
 2) You can run:  
 
-        $ ruby 8ball.rb
+        $ ruby main.rb
+        
+### Add word to dictionary ###
+
+The dictionary is on `data/words.txt`. 
+You can changing dictionary.  
+Each word should be written in capital letters. One word on a separate line.
