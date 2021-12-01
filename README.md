@@ -13,10 +13,14 @@ Detailed information about the game: [Wikipedia](https://en.wikipedia.org/wiki/H
 ### Running ###
 
 1) Download repo to your local directory.
-2) You can run:  
-
-        $ ruby main.rb
-        
+2) Install bundle:
+```
+$ bundle install
+```        
+3) You can run:  
+```
+$ bundle exec ruby main.rb
+```        
 ### Add word to dictionary ###
 
 The dictionary is on `data/words.txt`. 
