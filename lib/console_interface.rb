@@ -2,10 +2,9 @@ class ConsoleInterface
   # Все текстовые файлы из папки figures
   FIGURES =
     Dir["#{__dir__}/../data/figures/*.txt"].
-    sort.
-    map { |file_name| File.read(file_name) }
+      sort.
+      map { |file_name| File.read(file_name) }
 
-  # На вход конструктор класса ConsoleInterface принимает экземпляр класса Game.
   def initialize(game)
     @game = game
   end
@@ -13,24 +12,18 @@ class ConsoleInterface
   # Выводит в консоль текущее состояние игры, используя данные из экземпляра
   # класса Game (количество ошибок, сколько осталось попыток и т.д.)
   def print_out
-    puts <<~GAMESTATUS
-      Слово: #{word_to_show}
-      #{figure}
-      Ошибки (#{@game.errors_made}): #{errors_to_show}
-      У вас осталось ошибок: #{@game.errors_allowed}
-
-    GAMESTATUS
+    puts "Слово: #{word_to_show}".colorize(:blue)
+    puts figure.colorize(:yellow)
+    puts "Ошибки (#{@game.errors_made}): #{errors_to_show}".colorize(:red)
+    puts "У вас осталось ошибок: #{@game.errors_allowed}"
 
     if @game.won?
-      puts "Поздравляем, вы выиграли!"
+      puts "Поздравляем, вы выиграли!".colorize(:green)
     elsif @game.lost?
-      puts "Вы проиграли, загаданное слово: #{@game.word}"
+      puts "Вы проиграли, загаданное слово: #{@game.word}".colorize(:red)
     end
   end
 
-  # Возвращает ту фигуру из массива FIGURES, которая соответствует количеству
-  # ошибок, сделанных пользователем на данный момент (число ошибок берем у
-  # экземпляра класса Game)
   def figure
     FIGURES[@game.errors_made]
   end
@@ -53,8 +46,6 @@ class ConsoleInterface
     @game.errors.join(", ")
   end
 
-  # Получает букву из пользовательского ввода, приводит её к верхнему регистру
-  # и возвращает её
   def get_input
     print "Введите следующую букву: "
     gets[0].upcase
